@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permit Status Checker</title>
+</head>
+<body>
+    <h1>Check Your Permit Status</h1>
+    <form id="permitForm">
+        <label for="streetNumber">Street Number:</label>
+        <input type="text" id="streetNumber" name="streetNumber" required><br><br>
+        <label for="streetName">Street Name:</label>
+        <input type="text" id="streetName" name="streetName" required><br><br>
+        <button type="submit">Check Status</button>
+    </form>
+
+    <script>
+        document.getElementById('permitForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const streetNumber = document.getElementById('streetNumber').value;
+            const streetName = document.getElementById('streetName').value;
+            const ladwpUrl = `https://wmis.powersystem.ladwp.com/?StreetNumber=${encodeURIComponent(streetNumber)}&StreetName=${encodeURIComponent(streetName)}`;
+            window.location.href = ladwpUrl;
+        });
+    </script>
+</body>
+</html>
